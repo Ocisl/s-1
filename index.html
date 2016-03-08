@@ -30,7 +30,7 @@ if(searchers&&searchers.length()>2){
 function multiSearch(){
 	var q=document.getElementById("q").value || '2293';
 
-	document.getElementById("activeSearchers").innerHTML.split(/\s+/mg).forEach(v => window.open(v.replace("%s",q),v))
+	document.getElementById("activeSearchers").value.split(/\s+/mg).forEach(v => window.open(v.replace("%s",q),v))
 	var ses =document.querySelectorAll('input:checked');
 	for (var i=0;i < ses.length; i++ ){
 		window.open(ses[i].nextSibling.textContent.replace("%s",q), ses[i].value)
