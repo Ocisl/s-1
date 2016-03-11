@@ -27,9 +27,7 @@ if(searchers&&searchers.length()>2){
 		document.getElementById("activeSearchers").innerHTML = searchers;
 }
 
-function multiSearch(){
-	var q=document.getElementById("q").value || '2293';
-
+function multiSearch(q){
 	document.getElementById("activeSearchers").value.split(/\s+/mg).forEach(v => window.open(v.replace("%s",q),v))
 	var ses =document.querySelectorAll('input:checked');
 	for (var i=0;i < ses.length; i++ ){
@@ -39,12 +37,12 @@ function multiSearch(){
 
 	//var indexs = Array.prototype.map.call(document.querySelectorAll('input[type=checkbox]'), (v,i,a)=> {if(v.checked) return i});
 	
-
+if(location.hash)  multiSearch(location.hash.substr(1));
 </script>
 
 <form method="get" action="" onsubmit="return false">
 <div>
-	<input type="text" name="q" id="q"><input type="submit" value="→" onclick="multiSearch()"><br>
+	<input type="text" name="q" id="q"><input type="submit" value="→" onclick="multiSearch(document.getElementById('q').value||'2293')"><br>
 		<textarea id="activeSearchers" name="activeSearchers" rows="3">http://www.baidu.com.se/?q=%s
 http://bing.com/search?q=%s
 https://www.google.com/search?q=%s
